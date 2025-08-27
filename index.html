@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Key System - Rax Script</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #121212;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    .container {
+      margin-top: 80px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 20px;
+      background: #1e1e1e;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #000;
+    }
+
+    h1 {
+      color: #4CAF50;
+    }
+
+    .step {
+      margin: 30px 0;
+    }
+
+    button {
+      padding: 10px 20px;
+      background: #4CAF50;
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #45a049;
+    }
+
+    #keyOutput {
+      margin-top: 20px;
+      font-size: 18px;
+      background: #333;
+      padding: 10px;
+      border-radius: 5px;
+      word-break: break-all;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Rax Script - Key System</h1>
+
+    <div class="step">
+      <p>Step 1: Click the button to go through verification.</p>
+      <button onclick="goToStep2()">Go to Step 2</button>
+    </div>
+
+    <div class="step" id="step2" style="display: none;">
+      <p>Step 2: Wait 5 seconds and click continue.</p>
+      <button onclick="goToFinalStep()">Continue</button>
+    </div>
+
+    <div class="step" id="finalStep" style="display: none;">
+      <p>Step 3: Your key is ready!</p>
+      <div id="keyOutput">RaxScript-ABC123XYZ</div>
+      <button onclick="copyKey()">Copy Key</button>
+    </div>
+  </div>
+
+  <script>
+    function goToStep2() {
+      document.getElementById('step2').style.display = 'block';
+    }
+
+    function goToFinalStep() {
+      document.getElementById('finalStep').style.display = 'block';
+    }
+
+    function copyKey() {
+      const keyText = document.getElementById('keyOutput').innerText;
+      navigator.clipboard.writeText(keyText).then(() => {
+        alert('Key copied to clipboard!');
+      });
+    }
+  </script>
+</body>
+</html>
